@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+    <title>Tech Blog</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Tech Blog</a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="/post">Post</a></li>
+                  <li class="active"><a href="/post/addpost">Add Post</a></li>
+                  <% if (userdata.role === 'Admin'){ %>
+                    <li class="active"><a href="/allusers">Admin</a></li>
+                  <%}%>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="/logoutuser"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        <div class="row">
+          <center>
+            <h2>Hi <%= userdata.name %></h2>
+            <hr/>
+        </center>
+        
+            <div class="offset-md-5 col-md-5">
+                    <div class="row">
+                      <div class="col-md-10">
+                        <h2 >Post Title : <%=postdata.title%></h2>
+                        <h3 >Post Description: <%=postdata.description%></h3>
+                        <p>Tags : <%=postdata.tags%> </p>
+                        <p >Creator: <%=postdata.createdBy%></p>
+                        <p >Created On: <%=postdata.createdDate%></p>
+                        <p >Last Updated: <%=postdata.lastUpdated%></p>
+                        <br>
+                      </div>
+                    </div>
+                    <hr/>
+                    <div>
+                    <form action="/post/addcomment/<%=postdata._id%>" method="POST">
+                       Add Comment Here : <input name="comment"/>
+                        <button type="submit" class="glyphicon glyphicon-send btn btn-success"></button>
+                    </form>
+                    </div>
+                    <hr/>
+                    <h4>Recent Comments :</h4>
+                    <% if(comments.length === 0){ %>
+                        <h3>No comments</h3>
+                    <%}else{%>
+                        <%for(i = 0; i < comments.length; i++){%>
+                            <div>
+                            <hr>
+                            <h6>Commented By: <%= comments[i].commenter%></h6>
+                            <h4>Comment: <%= comments[i].comment%></h4>
+                            <h6>Time: <%= comments[i].time%></h6>
+                        </div>
+                        <%}}%>
+            </div>
+
+        </div>
+    </div>
+    
+</body>
+</html>

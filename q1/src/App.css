@@ -1,0 +1,15 @@
+.adduser{
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.users__feild{
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.users__heading{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
